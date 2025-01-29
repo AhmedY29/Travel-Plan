@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap');
+:root{
+    --primary: #D9DFC6;
+    --secondary: #FFF2C2;
+    --secondary-hover: #fceaa7;
+}
+body{
+    margin: 0;
+    font-family: "IBM Plex Sans Arabic", serif;
+}
+
+.container{
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+/* SMALL */
+@media (min-width:768px) {
+    .container{
+        width: 700px;
+    }
+}
+/* MEDIUM */
+@media (min-width:992px) {
+    .container{
+        width: 900px;
+    }
+}
+/* LARGE */
+@media (min-width:1200px) {
+    .container{
+        width: 1000px;
+    }
+}
+
+
+.landing{
+    background: var(--primary);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.landing .container .hero{
+    margin: 0;
+    text-align: center;
+}
+.landing .container .hero p{
+    line-height: 1.6;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.landing .container .hero button{
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    background: var(--secondary) ;
+    font-family: "IBM Plex Sans Arabic", serif;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.landing .container .hero button:hover{
+    background: var(--secondary-hover) ;
+    box-shadow: 1px 1px 20px #00000026;
+}

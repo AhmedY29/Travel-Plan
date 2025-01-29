@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "./i18n"; // استيراد ملف التهيئة
 import Cookies from "js-cookie";
+import Home from "./components/Home";
+import './style.css'
 export default function App() {
   const { t, i18n } = useTranslation();
 
@@ -16,9 +18,10 @@ export default function App() {
 
   return (
     <div>
-      <h2>{t("Welcome to React")}</h2>
+      {/* <h2>{t("Welcome to React")}</h2>
       <button onClick={() => changeLanguage("en")}>English</button>
-      <button onClick={() => changeLanguage("ar")}>العربية</button>
+      <button onClick={() => changeLanguage("ar")}>العربية</button> */}
+      <Home/>
     </div>
   );
 }
