@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 function Landing() {
       const { t } = useTranslation();
+      const [click, setClick] = useState(false)
+      const navigate = useNavigate()
+      const toForm = () =>{
+        setTimeout(() => {
+            navigate('/form')
+        }, 450);
+      }
   return (
     <section className='landing'>
         <div className="container">
             <div className="hero">
                 <h1>{t('Plan Your Trip, Enjoy the Journey')}</h1>
                 <p>{t("Tagline")}</p>
-                <button>{t("Build Plan")}</button>
+                <button onClick={() =>{setClick(true);
+                toForm()
+                }} className={click ? 'clicks' : ''}>{t("Build Plan")}</button>
             </div>
         </div>
     </section>

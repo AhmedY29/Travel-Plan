@@ -2,8 +2,12 @@ import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "./i18n"; // استيراد ملف التهيئة
 import Cookies from "js-cookie";
-import Home from "./components/Home";
+import Home from "./components/Home.jsx";
 import './style.css'
+import { Navigate, Route, Routes } from 'react-router-dom';
+
+import Form from "./components/Form";
+
 export default function App() {
   const { t, i18n } = useTranslation();
 
@@ -18,10 +22,14 @@ export default function App() {
 
   return (
     <div>
+      <Routes>
       {/* <h2>{t("Welcome to React")}</h2>
       <button onClick={() => changeLanguage("en")}>English</button>
       <button onClick={() => changeLanguage("ar")}>العربية</button> */}
-      <Home/>
+      
+      <Route path="/" element={<Home/>} />
+      <Route path="/form"  element={<Form/>} />
+    </Routes>
     </div>
   );
 }
