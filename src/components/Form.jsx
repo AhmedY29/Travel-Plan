@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import Radio from './Radio'
 import { chatSession } from '../AIModel'
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { GetPlaceDetails } from '../infoSearch';
 
 function Form() {
+    const { t } = useTranslation();
+    const [loading, setLoading] = useState(false)
     const [formDate , setFormDate] = useState({
         location:'',
         days: '',
         cost: '',
         withWho: ''
     })
+    const navigator = useNavigate()
     function handelCheckedCost(e) {
         setFormDate({...formDate, cost:e.target.id})
     }
@@ -25,44 +31,54 @@ function Form() {
     <section className='form'>
         <div className="container">
             <div className="tellUs">
-                <h3>أخبرنا عن رحلتك القادمة🏕️🌴</h3>
-                <p>لدينا بعض الاسألة الاساسية من أجل توليد خطة ممتازة.</p>
+                <h3>{t('tellUs')}</h3>
+                <p>{t('someQuestions')}</p>
             </div>
             <div className="costs">
                 <div className="input-number">
-                    <p>ماهي الوجهة التي تخطط لها ؟</p>
-                    <input onChange={(t)=> setFormDate({...formDate,location:t.target.value})} type="text" placeholder='مثلا الرياض' />
+                    <p>{t('destination')}</p>
+                    <input onChange={(t)=> setFormDate({...formDate,location:t.target.value})} type="text" placeholder={t('destinationSelect')} />
                 </div>
             </div>
             <div className="costs">
                 <div className="input-number">
-                    <p>ماهي المدة التي ستقضيها ؟</p>
-                    <input onChange={(t)=> setFormDate({...formDate, days:t.target.value})} type="number" placeholder='مثلا 4' min={1} />
+                    <p>{t('days')}</p>
+                    <input onChange={(t)=> setFormDate({...formDate, days:t.target.value})} type="number" placeholder={t('daysSelect')} min={1} />
                 </div>
             </div>
             <div className="costs">
-                <p>ماهي ميزانيتك ؟</p>
+                <p>{t('budget')}</p>
                 <div className="radio-group">
-                    <Radio onCh={handelCheckedCost} id={'cheep'} name={'cost'} icon={'💵'} label={'اقتصادي'}/>
-                    <Radio onCh={handelCheckedCost}  id={'mid'} name={'cost'} icon={'💰'} label={'متوسط'}/>
-                    <Radio onCh={handelCheckedCost} id={'lux'} name={'cost'} icon={'💸'} label={'غالي'}/>
+                    <Radio onCh={handelCheckedCost} id={'cheep'} name={'cost'} icon={'💵'} label={t('budgetCheep')}/>
+                    <Radio onCh={handelCheckedCost}  id={'mid'} name={'cost'} icon={'💰'} label={t('budgetModerate')}/>
+                    <Radio onCh={handelCheckedCost} id={'lux'} name={'cost'} icon={'💸'} label={t('budgetLuxury')}/>
                 </div>
             </div>
             <div className="costs">
-                <p>تخطط لـ السفر مع ؟</p>
+                <p>{t('withWho')}</p>
                 <div className="radio-group">
-                    <Radio onCh={handelCheckedWithWho} id={'alone'} name={'planWith'} icon={'✈️'} label={'بمفردي'}/>
-                    <Radio onCh={handelCheckedWithWho} id={'couple'} name={'planWith'} icon={'🧑‍🤝‍🧑'} label={'زوجان'}/>
-                    <Radio onCh={handelCheckedWithWho} id={'family'} name={'planWith'} icon={'👨‍👩‍👧‍👦'} label={'مع العائلة'}/>
-                    <Radio onCh={handelCheckedWithWho} id={'friend'} name={'planWith'} icon={'🚢'} label={'مع الاصدقاء'}/>
+                    <Radio onCh={handelCheckedWithWho} id={'alone'} name={'planWith'} icon={'✈️'} label={t('withWhoJustMe')}/>
+                    <Radio onCh={handelCheckedWithWho} id={'couple'} name={'planWith'} icon={'🧑‍🤝‍🧑'} label={t('withWhoCouple')}/>
+                    <Radio onCh={handelCheckedWithWho} id={'family'} name={'planWith'} icon={'👨‍👩‍👧‍👦'} label={t('withWhoFamily')}/>
+                    <Radio onCh={handelCheckedWithWho} id={'friend'} name={'planWith'} icon={'🚢'} label={t('withWhoFriends')}/>
                 </div>
             </div>
             <div className="submit">
-                <button onClick={async() =>{
+                <button disabled={loading} onClick={async() =>{
                     // console.log(Final_Prompt);
-                    const res = await chatSession.sendMessage(Final_Prompt);
-                    console.log(res.response.text())
-                }}>أصنع الخطة</button>
+                    setLoading(true);
+                    if(formDate.location == "" || formDate.cost == "" || formDate.days == "" || formDate.withWho == ""){
+                        setLoading(false)
+                        alert('Please Fill Fields')
+                    }else{
+                        
+                        const res = await chatSession.sendMessage(Final_Prompt);
+                        console.log(res.response.text())
+                        setLoading(false)
+                        // GetPlacePhoto()
+                        navigator('/plan')
+                    }
+                }}>{loading ? 'Loading...':t('buildPlan')}</button>
             </div>
         </div>
     </section>

@@ -5,10 +5,10 @@ import { useNavigate } from 'react-router-dom';
 function Landing() {
       const { t } = useTranslation();
       const [click, setClick] = useState(false)
-      const navigate = useNavigate()
+      const navigator = useNavigate()
       const toForm = () =>{
         setTimeout(() => {
-            navigate('/form')
+          navigator('/form')
         }, 450);
       }
   return (

@@ -7,6 +7,7 @@ import './style.css'
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import Form from "./components/Form";
+import Plan from "./components/Plan.jsx";
 
 export default function App() {
   const { t, i18n } = useTranslation();
@@ -29,6 +30,7 @@ export default function App() {
       
       <Route path="/" element={<Home/>} />
       <Route path="/form"  element={<Form/>} />
+      <Route path="/plan"  element={<Plan/>} />
     </Routes>
     </div>
   );

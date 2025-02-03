@@ -1,5 +1,21 @@
 {
     "Plan Your Trip, Enjoy the Journey": "Plan Your Trip, Enjoy the Journey!",
     "Tagline": "Whether you're seeking a new adventure or the perfect relaxation, we provide the tools to organize your trip in the best way.",
-    "Build Plan":"Build Plan"
+    "Build Plan":"Build Plan",
+    "tellUs":"Tell us your travel preferences 🏕️🌴",
+    "someQuestions": "Just provide some basic information, and our trip planner will generate trip.",
+    "destination":"What is destination of choice?",
+    "destinationSelect":"Ex:Riyadh..",
+    "days":"How many days are you planning your trip?",
+    "daysSelect":"Ex:3",
+    "budget":"What is your budget?",
+    "budgetCheep":"Cheep",
+    "budgetModerate":"Moderate",
+    "budgetLuxury":"Luxury",
+    "withWho":"Who do you plan on traveling with on your next adventure?",
+    "withWhoJustMe":"Just Me",
+    "withWhoCouple":"A Couple",
+    "withWhoFamily":"Family",
+    "withWhoFriends":"Friends",
+    "buildPlan":"Build Plan"
 }
