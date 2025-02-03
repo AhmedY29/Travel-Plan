@@ -13,8 +13,8 @@ body{
 .container{
     margin-left: auto;
     margin-right: auto;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 /* SMALL */
 @media (min-width:768px) {
@@ -184,3 +184,59 @@ input:checked + .radio-title{
     transform: scale(1.2);
     background: var(--primary-hover);
 }
+
+
+/* plan */
+
+.plan{
+    padding-top: 80px;
+    background: var(--primary);
+}
+.plan .container .plan-content .city-img img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    background-color: var(--secondary);
+    padding: 5px;
+}
+.plan .container .plan-content .text{
+    display: flex;
+    justify-content: space-between;
+}
+.plan .container .plan-content .text h3{
+    background: var(--secondary);
+    padding: 5px;
+    border-radius: 10px;
+}
+.plan .container .plan-content .cards .card {
+    padding: 5px 15px;
+    background: var(--secondary);
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.plan .container .plan-content .cards .card:hover {
+    background: var(--secondary-hover);
+    box-shadow: 1px 1px 20px #00000026;
+    
+}
+.plan .container .plan-content .cards .card .title{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+/* .plan .container .plan-content .cards .card .details{
+    display: flex;
+} */
+.plan .container .plan-content .cards{
+    display: flex;
+    /* grid-template-columns: repeat(auto-fill , minmax(300px, 1fr)); */
+    gap: 20px;
+    padding-bottom: 90px;
+    overflow: auto;
+}
+
+
+
+
+

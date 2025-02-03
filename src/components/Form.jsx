@@ -3,7 +3,6 @@ import Radio from './Radio'
 import { chatSession } from '../AIModel'
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { GetPlaceDetails } from '../infoSearch';
 
 function Form() {
     const { t } = useTranslation();
@@ -76,7 +75,7 @@ function Form() {
                         console.log(res.response.text())
                         setLoading(false)
                         // GetPlacePhoto()
-                        navigator('/plan')
+                        navigator('/plan', {state: res.response.text()})
                     }
                 }}>{loading ? 'Loading...':t('buildPlan')}</button>
             </div>
