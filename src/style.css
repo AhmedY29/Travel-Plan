@@ -232,11 +232,53 @@ input:checked + .radio-title{
     display: flex;
     /* grid-template-columns: repeat(auto-fill , minmax(300px, 1fr)); */
     gap: 20px;
-    padding-bottom: 90px;
+    padding-bottom: 50px;
     overflow: auto;
 }
 
 
+.itinerary .days{
+    display: grid;
+    grid-template-columns: repeat(auto-fill , minmax(400px, 1fr));
+    gap: 20px;
+    padding-bottom: 50px;
+
+}
+
+.itinerary .days .card {
+    padding: 5px 15px;
+    background: var(--secondary);
+    border-radius: 10px;
+    transition: 0.5s;
+}
+.itinerary .days .card:hover {
+    background: var(--secondary-hover);
+    box-shadow: 1px 1px 20px #00000026;
+    
+}
 
 
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    background: black;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    color: white;
+    font-weight: 600;
+}
+
+footer a{
+    color: var(--secondary-hover);
+    text-decoration: none;
+}
+footer p{
+    margin: 0;
+}
+footer a:hover{
+    text-decoration: underline;
+    
+}
 
