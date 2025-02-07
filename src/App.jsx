@@ -24,10 +24,9 @@ export default function App() {
 
   return (
     <div>
+      {/* <h2>{t("Welcome to React")}</h2> */}
+      <button className="btnLan" onClick={() => changeLanguage(lng == 'ar' ? 'en' : 'ar')}>{lng == 'ar' ? 'En' : 'Ar'}</button>
       <Routes>
-      {/* <h2>{t("Welcome to React")}</h2>
-      <button onClick={() => changeLanguage("en")}>English</button>
-      <button onClick={() => changeLanguage("ar")}>العربية</button> */}
       
       <Route path="/" element={<Home/>} />
       <Route path="/form"  element={<Form/>} />

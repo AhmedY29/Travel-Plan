@@ -70,9 +70,9 @@ function Plan() {
   useEffect(() => {
     if(!response)return
     setData({...data , 
-      location: lng == 'en' ? response.travelPlan.location.en : response.travelPlan.location.ar,
-      budget: lng == 'en' ? response.travelPlan.budget.en : response.travelPlan.budget.ar,
-      duration: lng == 'en' ? response.travelPlan.duration.en : response.travelPlan.duration.ar,
+      location:response.travelPlan.location,
+      budget: response.travelPlan.budget,
+      duration:response.travelPlan.duration,
       itinerary: lng == 'en' ? response.travelPlan.itinerary : response.travelPlan.itinerary,
       hotels:response.travelPlan.hotels 
     })
@@ -109,9 +109,9 @@ function Plan() {
               <img src={Img} alt={data.location} />
             </div>
             <div className="text">
-              <h3>{data.location}</h3>
-              <h3>{`${data.budget} ${data.budget == 'Luxury' ? '💸' : data.budget == 'Cheep' ? '💵' : '💰'} `}</h3>
-              <h3>{`${data.duration} 📅`}</h3>
+              <h3>{ lng == 'en' ? data.location.en : data.location.ar}</h3>
+              <h3>{`${lng == 'en' ? data.budget.en : data.budget.ar} ${data.budget.en == 'Luxury' ? '💸' : data.budget.en == 'Cheep' ? '💵' : '💰'} `}</h3>
+              <h3>{`${lng == 'en' ? data.duration.en : data.duration.ar} 📅`}</h3>
             </div>
             <div className="hotels">
                 <h2>{t('hotels')}</h2>
@@ -140,33 +140,24 @@ function Plan() {
                     itineraries && itineraries.map((itinerary , index) => (
                       <div key={index} className="card">
                       <div className="title">
-                      <h4>{lng == 'en' ? itinerary.day : `اليوم ${index + 1}` }</h4>
-                      <h4>{lng == 'en' ? itinerary.theme.en : itinerary.theme.ar}💵</h4>
+                      <h4>{lng == 'en' ? `Day ${index + 1}` : `اليوم ${index + 1}` }</h4>
+                      <h4>{lng == 'en' ? itinerary.theme.en : itinerary.theme.ar}</h4>
                       </div>
+                      <div className="places">
+
                       {
                        itinerary && itinerary?.places?.map((place, index) =>(
-                          <div key={index} className="places">
-                          <p>-📄{lng == 'en' ? place.placeName.en : place.placeName.ar}</p>
-                          <p>📌 {lng == 'en' ? place.placeDetails.en : place.placeDetails.ar}</p>
-                          <p>🌟 {lng == 'en' ? place.ticketPricing.en : place.ticketPricing.ar}</p>
+                          <div key={index} className="place">
+                          <h4>{lng == 'en' ? place.placeName.en : place.placeName.ar}</h4>
+                          <p> {lng == 'en' ? place.placeDetails.en : place.placeDetails.ar}</p>
+                          <p>💵 {lng == 'en' ? place.ticketPricing.en : place.ticketPricing.ar}</p>
                           </div>
                         ))
                       }
-
+                      </div>
                     </div>
                   ))
                   }
-                  {/* <div className="card">
-                    <div className="title">
-                    <h4> 📍هيلتون جاردن إن تبوك </h4>
-                    <h4>600 - 800 ريال سعودي لليلة الواحدة 💵</h4>
-                    </div>
-                    <div className="details">
-                    <p>📄وفر إقامة فاخرة مع وسائل راحة حديثة وخدمات عالية الجودة. تشتهر بغرفها المريحة وخيارات الطعام الجيدة.</p>
-                    <p>📌 طريق الملك فيصل، تبوك، المملكة العربية السعودية</p>
-                    <p>🌟 4 نجوم</p>
-                    </div>
-                  </div> */}
                 </div>
             </div>
           </div>

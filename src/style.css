@@ -269,7 +269,51 @@ footer{
     color: white;
     font-weight: 600;
 }
+.places {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 5px;
+}
+@media (max-width:992px) {
+   .places{
+    flex-direction: column;
+    gap: 20px;
+   } 
+   .place{
+    width: 90% !important;
+   }
+   .itinerary .days .card{
+    width: 68%;
+   }
+   .plan .container .plan-content .cards{
+    flex-direction: column;
+   }
+}
 
+
+.place{
+    width: 44%;
+    background: var(--primary);
+    padding: 10px;
+    border-radius: 10px;
+    transition: 0.4s;
+}
+.place:hover{
+    background: var(--primary-hover);
+    box-shadow: 1px 1px 20px #00000026;
+}
+
+.btnLan{
+    position: absolute;
+    padding: 5px 10px;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    background: var(--primary-hover);
+    top: 20px;
+    left: 50%;
+    cursor: pointer;
+}
 footer a{
     color: var(--secondary-hover);
     text-decoration: none;
